@@ -1,18 +1,26 @@
-import React from 'React'
+import React from 'react'
+import 'antd/dist/antd.css';
+import Recipelist from './Recipelist'
 
-
-class FoodArray extends Component{
+class FoodArray extends React.Component{
 
     render(){
 
+        let ingredientList = this.props.ingredientArray;
+        
+        let ingredientJSX = ingredientList.map((ingredient) => {
+            return <Recipelist text={ingredient} ingredientTheyClicked={this.props.ingredientTheyClicked}/>
+        });
+        
+
         return(
-            
-            <div>
 
-                Ingredients List
+            <span>
 
-            </div>
+                {ingredientJSX}
+
+            </span>
         )
     }
-
-export default FoodArray
+}
+export default FoodArray;

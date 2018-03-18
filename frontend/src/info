@@ -1,0 +1,25 @@
+  proteinArray: 
+    [
+      {
+        'chicken', 'fish', 'pork', 'veal', 'beef','tofu', 'shrimp', 'scallops', 'bacon', 'bologna'
+      }
+    ]
+  
+
+  dairyArray: {
+    [
+      'mozzarella', 'milk', 'cream cheese', 'eggs', 'yogurt', 'sour cream', 'american cheese', 'paneer', 'whipped cream', 'half and half'
+    ]
+  
+
+  grainsArray: {
+    [
+      'rice', 'pasta', 'flour','brown rice', 'bagel', 'bread', 'pretzel', 'baking powder', 'pancake mix', 'rolled oats'
+    ] 
+  
+
+  veggieArray: {
+    [
+      'lettuce', 'avocado', 'onion', 'garlic', 'potato', 'tomato', 'spinach', 'broccoli', 'carrot', 'celery'
+    ]
+  }
