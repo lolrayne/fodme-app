@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Recipelist from './Recipelist';
+import key from './config';
+import axios from 'axios';
+import ImageDisplay from './ImageDisplay';
 
 
 //============ANT UI============//
 import 'antd/dist/antd.css';
+import { Checkbox } from 'antd';
 import { Button } from 'antd';
 import { Layout } from 'antd';
 import { Collapse } from 'antd';
@@ -28,6 +32,12 @@ const grains = 'Add your grains';
 const veggies = 'Add your vegetables';
 
 //=============================//
+
+let url = 'https://api.edamam.com/search?q=chicken&app_id=' + key.APP_ID + '&app_key=' + key.APP_KEY 
+
+//=============================//
+
+
 
 class App extends Component {
 constructor(){
@@ -55,20 +65,60 @@ constructor(){
     apiList:[]
 
   }
+
+  this.fetchRecipe = this.fetchRecipe.bind(this)
 }
 
 ingredientTheyClicked=(ingredient)=>{
   console.log(ingredient)
-  let apiList = [];
+  let apiList = this.state.apiList
+  
   //check whether or not ingredient exists inside our apiList array in state
   //hint: look at .includes OR .indexOf
   //if it ISNT in array, push it and setState
   //if it IS, remove it and setState (to remove look into splice)
-  if (ingredient.includes(false).push(apiList))
-  this.setState(this.setState(apiList))
-  else(ingredient.includes(true).splice(apiList))
-  this.setState(this.setState(apiList))
+  if (apiList.includes(ingredient)){
+    let ingredientIndex = apiList.indexOf(ingredient)
+    let apiListCopy = Array.from(this.state.apiList);
+    
+    //we need to splice out our ingredient we just found
+    //splice follows the format of arrayToSplice.splice(whereToSpliceFrom, howManyThingsToSplice, ...shouldWeAddAnything?)
+    //listCopy.splice(indexWeFound, 1)
+    apiListCopy.splice(ingredientIndex, 1)
+    this.setState({
+      apiList: apiListCopy
+    })
+  }
+ 
+  else{
+    let apiListCopy = Array.from(this.state.apiList)
+    apiListCopy.push(ingredient)
+    console.log(apiList)
+    this.setState({
+      apiList: apiListCopy
+    })
+  }
+
 }
+
+
+fetchRecipe(event){
+  event.preventDefault()
+
+    let selectedItems = this.apiList
+
+    let url = 'https://api.edamam.com/search?q='+ selectedItems +'&app_id=' + key.APP_ID + '&app_key=' + key.APP_KEY
+
+    axios.get(url)
+    .then(result =>{
+      console.log(result)
+    })
+    .catch(error =>{
+      console.log(error)
+    })
+}
+
+
   render() {
 
     return (
@@ -96,7 +146,16 @@ ingredientTheyClicked=(ingredient)=>{
                           <FoodArray ingredientArray={this.state.veggieArray} ingredientTheyClicked={this.ingredientTheyClicked}/>
                         </Panel>
                     </Collapse>
-                    <Button style ={{margin: '10px'}}>Submit</Button>
+
+                    <Col className="gutter-row" span={6}>
+                      <div className="gutter-box">
+                        {/* <ImageDisplay imageArray={this.state.recipeDisplay} /> */}
+                      </div>
+                    
+                    </Col>
+
+                    <Button onClick={this.fetchRecipe} style ={{margin: '10px'}}>Submit</Button>
+
                   </Col>
               </Content>
             </Layout>

@@ -1,12 +1,13 @@
 import React from 'react';
-import FoodArray from './FoodArray'
+import 'antd/dist/antd.css';
+import { Checkbox } from 'antd';
 
 class Recipelist extends React.Component {
     render(){
         return (
             <li>
                 <span>{this.props.text}</span>
-                <input type = "checkbox" onClick={()=>this.props.ingredientTheyClicked(this.props.text)} style={{ margin:'5px' }}/>
+                <Checkbox onClick={()=>this.props.ingredientTheyClicked(this.props.text)} style={{ margin:'5px' }}></Checkbox>
             </li>
         )
     }
