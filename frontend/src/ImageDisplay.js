@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import Image from './Image'
+
 
 import 'antd/dist/antd.css';
 
@@ -6,10 +8,13 @@ import 'antd/dist/antd.css';
 class ImageDisplay extends Component {
     render(){
 
-        let imageDisplay = this.props.apiList;
+        let imageDisplay = this.props.imageArray;
 
         let imageDisplayJSX = imageDisplay.map((imageData)=>{
-            return <ImageDisplay image={imageData}/>
+            return <Image img={imageData.recipe.image}
+                          url={imageData.recipe.url}
+                          ingredientDetails={imageData.recipe.ingredients}/>
+                          
         });
 
         return(

@@ -5,6 +5,7 @@ import Recipelist from './Recipelist';
 import key from './config';
 import axios from 'axios';
 import ImageDisplay from './ImageDisplay';
+import FoodArray from './FoodArray';
 
 
 //============ANT UI============//
@@ -14,7 +15,7 @@ import { Button } from 'antd';
 import { Layout } from 'antd';
 import { Collapse } from 'antd';
 import { Row, Col } from 'antd';
-import FoodArray from './FoodArray';
+
 //=============================//
 
 //============ANT UI============//
@@ -33,7 +34,7 @@ const veggies = 'Add your vegetables';
 
 //=============================//
 
-let url = 'https://api.edamam.com/search?q=chicken&app_id=' + key.APP_ID + '&app_key=' + key.APP_KEY 
+
 
 //=============================//
 
@@ -62,7 +63,9 @@ constructor(){
       'lettuce', 'avocado', 'onion', 'garlic', 'potato', 'tomato', 'spinach', 'broccoli', 'carrot', 'celery'
     ],
     //list of selected 
-    apiList:[]
+    apiList:[],
+
+    resultsRecipe:[]
 
   }
 
@@ -105,13 +108,17 @@ ingredientTheyClicked=(ingredient)=>{
 fetchRecipe(event){
   event.preventDefault()
 
-    let selectedItems = this.apiList
+    // let selectedItems = this.apiList
 
-    let url = 'https://api.edamam.com/search?q='+ selectedItems +'&app_id=' + key.APP_ID + '&app_key=' + key.APP_KEY
+    let url = 'https://api.edamam.com/search?q='+ this.state.apiList + '&app_id=' + key.APP_ID + '&app_key=' + key.APP_KEY
 
     axios.get(url)
     .then(result =>{
+      console.log(result.data.hits)
       console.log(result)
+      this.setState({
+        resultsRecipe:result.data.hits
+      })
     })
     .catch(error =>{
       console.log(error)
@@ -124,10 +131,10 @@ fetchRecipe(event){
     return (
       <div className='App'>
         <Layout>
-          <Header style={{ backgroundColor: '#fff1b8' }}><Col span={12}><h1 style={{ color: 'black' }} >Food Me App</h1></Col></Header>
+          <Header style={{ backgroundColor: '#fff1b8' }}><Col span={12}><h1 style={{ color: 'black' }} >Fridgify</h1></Col></Header>
             <Layout>
              <Content style={{ padding: '0 50px', backgroundColor: '#ffe58f' }}>
-                <Col span={8}>
+                <Col span={24}>
                     <Collapse accordion style={{backgroundColor: '#fff1f0'}}>
                         <Panel header="Protein Selection" key="1">
                           <p>{protein}</p>
@@ -147,20 +154,20 @@ fetchRecipe(event){
                         </Panel>
                     </Collapse>
 
-                    <Col className="gutter-row" span={6}>
-                      <div className="gutter-box">
-                        {/* <ImageDisplay imageArray={this.state.recipeDisplay} /> */}
-                      </div>
-                    
-                    </Col>
-
                     <Button onClick={this.fetchRecipe} style ={{margin: '10px'}}>Submit</Button>
-
-                  </Col>
+                    </Col>
+                    <Col span={24}>
+                      <div>
+                        {!!this.state.resultsRecipe.length && <ImageDisplay imageArray={this.state.resultsRecipe} />}
+                      </div>  
+                    </Col>
+                  
               </Content>
             </Layout>
+
+             
               <Footer style={{ textAlign: 'center', backgroundColor: '#fff1b8' }}>
-                Ant Design ©2018 Created by Ant UED
+                Stan Gold ©2018 Created by Ant UED
               </Footer>
             </Layout>
          
