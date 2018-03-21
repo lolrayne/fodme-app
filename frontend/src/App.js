@@ -156,12 +156,15 @@ fetchRecipe(event){
 
                     <Button onClick={this.fetchRecipe} style ={{margin: '10px'}}>Submit</Button>
                     </Col>
-                    <Col span={24}>
-                      <div>
+
+
+                    {/* <Col span={24}> */}
+                      
                         {!!this.state.resultsRecipe.length && <ImageDisplay imageArray={this.state.resultsRecipe} />}
-                      </div>  
-                    </Col>
-                  
+                      
+                    {/* </Col> */}
+                 
+
               </Content>
             </Layout>
 

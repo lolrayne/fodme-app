@@ -7,19 +7,17 @@ class Image extends Component{
     render(){
         return(
 
-            <div>
-                <Row>
-                    <Col span={12}>
-                        <img src={this.props.img}/>
+
+                
+
+                    <Col span={8}><a target="_blank" href={this.props.url}><img src={this.props.img}/></a>
+                    <p title={this.props.title}>{this.props.title}</p>
+                    
                     </Col>
 
-                    <Col span={12}>
-                        <a href={this.props.url}>click me</a>
-                    </Col>
 
-                </Row>
 
-            </div>
+            
         )
     }
 }

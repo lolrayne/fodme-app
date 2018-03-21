@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Image from './Image'
+import { Row, Col } from 'antd';
 
 
 import 'antd/dist/antd.css';
@@ -11,18 +12,21 @@ class ImageDisplay extends Component {
         let imageDisplay = this.props.imageArray;
 
         let imageDisplayJSX = imageDisplay.map((imageData)=>{
-            return <Image img={imageData.recipe.image}
+            return  <Col span={6}><Image img={imageData.recipe.image}
                           url={imageData.recipe.url}
-                          ingredientDetails={imageData.recipe.ingredients}/>
-                          
+                          title={imageData.recipe.label}
+                                                    />
+                    </Col>      
         });
 
         return(
-            <span>
-
+            
+                // <span>
+               <Row>
                  {imageDisplayJSX}
-
-            </span>
+                </Row>
+                // </span>
+            
         )
     }
 }
