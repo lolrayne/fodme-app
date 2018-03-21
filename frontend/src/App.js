@@ -15,6 +15,7 @@ import { Button } from 'antd';
 import { Layout } from 'antd';
 import { Collapse } from 'antd';
 import { Row, Col } from 'antd';
+import { Icon } from 'antd';
 
 //=============================//
 
@@ -131,7 +132,10 @@ fetchRecipe(event){
     return (
       <div className='App'>
         <Layout>
-          <Header style={{ backgroundColor: '#fff1b8' }}><Col span={12}><h1 style={{ color: 'black' }} >Fridgify</h1></Col></Header>
+          <Header style={{ backgroundColor: '#fff1b8' }}>
+          <img style={{maxWidth:'4%', padding:'5px'}} src="/images/burgerart.png"/>
+          <Col span={12}><h1 style={{ color: 'black', fontFamily:'Leckerli One' }} >Fridgify</h1>
+          </Col></Header>
             <Layout>
              <Content style={{ padding: '0 50px', backgroundColor: '#ffe58f' }}>
                 <Col span={24}>
@@ -171,6 +175,17 @@ fetchRecipe(event){
              
               <Footer style={{ textAlign: 'center', backgroundColor: '#fff1b8' }}>
                 Stan Gold ©2018 Created by Ant UED
+                <div>
+                
+                  <Icon type="linkedin" style={{ fontSize: 30, color: '#08c'}}/>
+                  <Icon type="twitter" style={{ fontSize: 30, color: '#08c'}}/>
+                  <Icon type="instagram" style={{ fontSize: 30, color: '#08c'}}/>
+                  
+                  <a href="https://www.instagram.com/stangold/">Instagram</a>
+                  <a href="https://www.linkedin.com/in/stan-gold/">LinkedIn</a>
+                  <a href="https://www.linkedin.com/in/stan-gold/">Twitter</a>
+                  
+                </div>
               </Footer>
             </Layout>
          

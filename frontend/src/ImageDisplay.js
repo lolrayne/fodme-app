@@ -12,17 +12,17 @@ class ImageDisplay extends Component {
         let imageDisplay = this.props.imageArray;
 
         let imageDisplayJSX = imageDisplay.map((imageData)=>{
-            return  <Col span={6}><Image img={imageData.recipe.image}
+            return  <Col lg={6} xs={24} md={12} ><Image img={imageData.recipe.image}
                           url={imageData.recipe.url}
                           title={imageData.recipe.label}
-                                                    />
+                                                        />
                     </Col>      
         });
 
         return(
             
                 // <span>
-               <Row>
+               <Row gutter={{md:16, lg:16}}>
                  {imageDisplayJSX}
                 </Row>
                 // </span>

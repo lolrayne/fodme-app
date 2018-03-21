@@ -9,11 +9,11 @@ class Image extends Component{
 
 
                 
-
-                    <Col span={8}><a target="_blank" href={this.props.url}><img src={this.props.img}/></a>
-                    <p title={this.props.title}>{this.props.title}</p>
+                    <div>
+                    <a target="_blank" href={this.props.url}><img style={{width:'100%', border:'1px solid black'}} src={this.props.img}/></a>
+                    <p style={{textAlign:'center', fontWeight:'900'}} title={this.props.title}>{this.props.title.length > 30 ? this.props.title.slice(0,30)+'...':this.props.title}</p>
+                    </div>
                     
-                    </Col>
 
 
 
