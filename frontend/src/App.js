@@ -37,10 +37,6 @@ const veggies = 'Add your vegetables';
 
 
 
-//=============================//
-
-
-
 class App extends Component {
 constructor(){
   super()
@@ -72,6 +68,10 @@ constructor(){
 
   this.fetchRecipe = this.fetchRecipe.bind(this)
 }
+
+
+//clicked ingredients
+//load them into state and remove if clicked
 
 ingredientTheyClicked=(ingredient)=>{
   console.log(ingredient)
@@ -105,11 +105,9 @@ ingredientTheyClicked=(ingredient)=>{
 
 }
 
-
+//recipe search with axios GET route
 fetchRecipe(event){
   event.preventDefault()
-
-    // let selectedItems = this.apiList
 
     let url = 'https://api.edamam.com/search?q='+ this.state.apiList + '&app_id=' + key.APP_ID + '&app_key=' + key.APP_KEY
 
@@ -137,7 +135,7 @@ fetchRecipe(event){
           <Col span={12}><h1 style={{ color: 'black', fontFamily:'Leckerli One' }} >Fridgify</h1>
           </Col></Header>
             <Layout>
-             <Content style={{ padding: '0 50px', backgroundColor: '#ffe58f' }}>
+             <Content style={{ padding: '0 50px', backgroundColor: '#ffe58f', minHeight: '87vh' }}>
                 <Col span={24}>
                     <Collapse accordion style={{backgroundColor: '#fff1f0'}}>
                         <Panel header="Protein Selection" key="1">
@@ -162,19 +160,27 @@ fetchRecipe(event){
                     </Col>
 
 
-                    {/* <Col span={24}> */}
+                    {/* image display from ImageDisplay props */}
                       
                         {!!this.state.resultsRecipe.length && <ImageDisplay imageArray={this.state.resultsRecipe} />}
                       
-                    {/* </Col> */}
+                    
                  
 
               </Content>
             </Layout>
 
              
-              <Footer style={{ textAlign: 'center', backgroundColor: '#fff1b8' }}>
+              <Footer style={{ textAlign: 'center', backgroundColor: '#fff1b8', fontWeight:"900" }}>
                 Stan Gold ©2018 Created by Ant UED
+
+              <div>
+              <a href="https://www.linkedin.com/in/stan-gold/" target="_blank" ><Icon type="linkedin" style={{ fontSize: 25, padding: '4px', color:'#d46b08' }}/></a>  
+              <a href="https://www.instagram.com/stangold/" target="_blank" ><Icon type="instagram" style={{ fontSize: 25, padding: "4px", color: '#d46b08' }}/></a>
+                  
+              </div>
+
+
               </Footer>
             </Layout>
          
