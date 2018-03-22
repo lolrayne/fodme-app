@@ -175,17 +175,6 @@ fetchRecipe(event){
              
               <Footer style={{ textAlign: 'center', backgroundColor: '#fff1b8' }}>
                 Stan Gold ©2018 Created by Ant UED
-                <div>
-                
-                  <Icon type="linkedin" style={{ fontSize: 30, color: '#08c'}}/>
-                  <Icon type="twitter" style={{ fontSize: 30, color: '#08c'}}/>
-                  <Icon type="instagram" style={{ fontSize: 30, color: '#08c'}}/>
-                  
-                  <a href="https://www.instagram.com/stangold/">Instagram</a>
-                  <a href="https://www.linkedin.com/in/stan-gold/">LinkedIn</a>
-                  <a href="https://www.linkedin.com/in/stan-gold/">Twitter</a>
-                  
-                </div>
               </Footer>
             </Layout>
          
